@@ -1,0 +1,42 @@
+<div class="modal fade" id="editModal" role="dialog" *ngIf="selectedEmployee">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" (click)="goToHome()">&times;</button>
+                <h4 class="modal-title">Edit Employee Details</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="inputId" >Employee Id</label>
+                        <input type="text" id="inputId" class="form-control width-auto" name="emp_id" required  [(ngModel)]="selectedEmployee.employee_id" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="inputFirstName">First Name</label>
+                        <input type="text" id="inputFirstName" class="form-control width-auto" name="emp_firstName" required  [(ngModel)]="selectedEmployee.first_name"  autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="inputLastName">Last Name</label>
+                        <input type="text" id="inputLastName" class="form-control width-auto" required  [(ngModel)]="selectedEmployee.last_name" name="emp_lastName">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="inputEmail">Email id</label>
+                        <input type="text" id="inputEmail" class="form-control width-auto" [(ngModel)]="selectedEmployee.email" required  name="emp_email">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="inputGender">Gender</label>
+                        <select class="form-control width-auto" id="emp_gender" #gender required (change)="setGender(gender.value)" name="gender" [(ngModel)]="selectedEmployee.gender">
+                            <option *ngFor="let type of types" [value]="type">{{type}}</option>
+                     </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-right" data-dismiss="modal" (click)="goToHome()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
