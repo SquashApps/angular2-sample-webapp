@@ -12,10 +12,12 @@ export class deleteDetailsComponent implements OnInit {
     @Input()
     employees: employeeProperty[];
     deleteId:number;
+    errorMessage:string;
     constructor(private employeeService: EmployeeService,private router:Router,private route:ActivatedRoute) {
     }
     getEmployeeList(): void {
-        this.employeeService.getList().then(employees => this.employees = employees);
+        this.employeeService.getList().then(employees => this.employees = employees,
+        error=> this.errorMessage = <any>error);
     }
     ngOnInit(): void {
         this.getEmployeeList();

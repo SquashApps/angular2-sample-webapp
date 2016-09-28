@@ -14,11 +14,13 @@ export class employeeListComponent implements OnInit {
     limit=10;
     displayData:employeeProperty[];
     hide_loadMore=false;
+    errorMessage:string;
     constructor(private employeeService: EmployeeService,private router:Router) {
         this.displayData=[];
     }
     getEmployeeList(): void {
-        this.employeeService.getList().then(employees =>this.employees = employees)
+        this.employeeService.getList().then(employees =>this.employees = employees,
+        error=> this.errorMessage = <any>error)
         this.loadMore();
     }
     ngOnInit(): void {

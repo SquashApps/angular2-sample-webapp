@@ -14,11 +14,13 @@ export class addDetailsComponent implements OnInit {
     addEmployee:employeeProperty;
     types=['','Male','Female'];
     emp_gender:string;
+    errorMessage:string;
     constructor(private employeeService: EmployeeService,private router:Router) {
     }
 
     getEmployeeList(): void {
-        this.employeeService.getList().then(employees => this.employees = employees);
+        this.employeeService.getList().then(employees => this.employees = employees,
+        error=> this.errorMessage = <any>error);
     }
     ngOnInit(): void {
         this.getEmployeeList();

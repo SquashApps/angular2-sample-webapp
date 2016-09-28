@@ -15,11 +15,13 @@ export class editDetailsComponent implements OnInit {
     employeeSelected: boolean;
     emp_gender:string;
     types=['Male','Female'];
+    errorMessage:string;
     constructor(private employeeService: EmployeeService,private router:Router,private route:ActivatedRoute) {
     }
 
     getEmployeeList(): void {
-        this.employeeService.getList().then(employees => this.employees = employees);
+        this.employeeService.getList().then(employees => this.employees = employees,
+        error=> this.errorMessage = <any>error);
     }
     ngOnInit(): void {
         this.getEmployeeList();
