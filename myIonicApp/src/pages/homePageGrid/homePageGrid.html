@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Employee Details</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card *ngFor="let employee of displayData;let i=index">
+    <ion-card-header>{{i+1}}.
+      <span>Employee Id:</span><span>{{employee.employee_id}}</span>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="font-16">
+        <span>Name:</span><span> {{employee.firstName}} {{employee.lastName}}</span>
+      </div>
+      <div class="font-16">
+        <span>Email:</span><span> {{employee.email}}</span>
+      </div>
+      <div class="font-16">
+        <span>Gender:</span><span> {{employee.gender}}</span>
+      </div>
+      <button ion-button clear icon-only small (click)="deleteEmployee(employee.employee_id)">
+        <ion-icon  ios="ios-trash-outline" md="md-trash" color="danger"></ion-icon>
+      </button>
+      <button ion-button clear small (click)="openEditModal({employee_id:employee.employee_id})">
+        <ion-icon ios="ios-brush-outline" md="md-brush"></ion-icon>
+        </button>
+    </ion-card-content>
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingText="Loading more data..." *ngIf="show_loadingText">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
