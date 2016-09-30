@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Platform, NavParams, ViewController } from 'ionic-angular';
 import { EmployeeService } from '../../app/employee.service';
-import { employeeProperty } from '../../app/employee';
+import { EmployeeProperty } from '../../app/employee';
 @Component({
     templateUrl: 'editModalPage.html'
 })
 export class EditModalPage {
-    employees: employeeProperty[];
+    employees: EmployeeProperty[];
     errorMessage: string;
-    selectedEmployee: employeeProperty;
+    selectedEmployee: EmployeeProperty;
     constructor(
         public platform: Platform,
         public params: NavParams,
@@ -24,6 +24,7 @@ export class EditModalPage {
         this.getEmployeeList();
     }
     findEmployee(xId) {
+        //loops through and finds the selected employee from employees array
         for (let employee of this.employees) {
             if (employee.employee_id === parseInt(xId)) {
                 this.selectedEmployee = employee;
@@ -31,6 +32,7 @@ export class EditModalPage {
         }
     }
     dismiss() {
+        //closes the modal
         this.viewCtrl.dismiss();
     }
 }

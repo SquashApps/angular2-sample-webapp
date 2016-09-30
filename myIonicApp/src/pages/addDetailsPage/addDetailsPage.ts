@@ -2,15 +2,15 @@ import { Component} from '@angular/core';
 
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { EmployeeService } from '../../app/employee.service';
-import { employeeProperty } from '../../app/employee';
+import { EmployeeProperty } from '../../app/employee';
 
 @Component({
   templateUrl: 'addDetailsPage.html'
 })
-export class addDetailsPage {
-  employees: employeeProperty[];
-  newEmployee: employeeProperty;
-  emp_gender="Male";
+export class AddDetailsPage {
+  employees: EmployeeProperty[];
+  newEmployee: EmployeeProperty;
+  empGender="Male";
   errorMessage:string;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -19,6 +19,7 @@ export class addDetailsPage {
     public alerCtrl: AlertController) {
 
   }
+  //
   getEmployeeList(): void {
     this.employeeService.getList().then(employees => this.employees = employees,
     error => { this.errorMessage = <any>error; console.log('error', error); });
@@ -27,12 +28,16 @@ export class addDetailsPage {
     this.getEmployeeList();
   }
   addEmployeeDetails(empData) {
+    //generates a random number for employee_id
     empData.employee_id = Math.floor(Math.random() * 1000000000);
-    empData.gender = this.emp_gender;
+    //assigns the selected option value to json empData
+    empData.gender = this.empGender;
+    //add the json to employees array
     this.employees.unshift(empData);
     this.confirm();
   }
   confirm() {
+    //opens a success alert box
     let alert = this.alerCtrl.create({
       title: 'Employee Added!',
       subTitle: 'Visit Home Page to view the details!',

@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { homePageGrid } from '../pages/homePageGrid/homePageGrid';
-import { homePageList  } from '../pages/homePageList/homePageList';
-import { tabsPage } from '../pages/tabsPage/tabsPage';
-import {addDetailsPage} from '../pages/addDetailsPage/addDetailsPage';
+import { HomePageGrid } from '../pages/homePageGrid/homePageGrid';
+import { HomePageList  } from '../pages/homePageList/homePageList';
+import { TabsPage } from '../pages/tabsPage/tabsPage';
+import {AddDetailsPage} from '../pages/addDetailsPage/addDetailsPage';
 import {EditModalPage} from '../pages/editPage/editModalPage';
-import {detailsModalPage} from '../pages/detailsPage/detailsModalPage';
+import {DetailsModalPage} from '../pages/detailsPage/detailsModalPage';
 import {EmployeeService} from './employee.service';
 @NgModule({
   declarations: [
     MyApp,
-    homePageGrid,
-    addDetailsPage,
+    HomePageGrid,
+    AddDetailsPage,
     EditModalPage,
-    tabsPage,
-    homePageList ,
-    detailsModalPage
+    TabsPage,
+    HomePageList ,
+    DetailsModalPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -24,12 +24,12 @@ import {EmployeeService} from './employee.service';
   bootstrap: [IonicApp],
   entryComponents: [ 
     MyApp,
-    homePageGrid,
-    addDetailsPage,
+    HomePageGrid,
+    AddDetailsPage,
     EditModalPage,
-    tabsPage,
-    homePageList ,
-    detailsModalPage
+    TabsPage,
+    HomePageList ,
+    DetailsModalPage
   ],
   providers: [EmployeeService]
 })

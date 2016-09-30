@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { NavController,AlertController,ModalController } from 'ionic-angular';
 import { EmployeeService } from '../../app/employee.service';
-import { employeeProperty } from '../../app/employee';
+import { EmployeeProperty } from '../../app/employee';
 import {EditModalPage} from '../editPage/editModalPage';
-import {detailsModalPage} from '../detailsPage/detailsModalPage';
+import {DetailsModalPage} from '../detailsPage/detailsModalPage';
 @Component({
   templateUrl: 'homePageList.html'
 })
-export class homePageList {
-  employees: employeeProperty[];
-  displayData: employeeProperty[] = [];
+export class HomePageList {
+  employees: EmployeeProperty[];
+  displayData: EmployeeProperty[] = [];
   skip=0;
   limit=10;
   show_loadingText=true;
@@ -20,6 +20,7 @@ export class homePageList {
   public modalCtrl: ModalController) {
   }
   getEmployeeList(): void {
+    //fetches mock data values and stores in employees and displayData array
     this.employeeService.getList().then(employees => {
       this.employees = employees
       for (var i =0; i < 10; i++) {
@@ -33,14 +34,16 @@ export class homePageList {
     this.getEmployeeList();
   }
   skipValue(){
+    //increment skip and limit value for infiniteScroll
         this.skip+=10;
         this.limit+=10;
   }
   loadMore(infiniteScroll) {
-   
-setTimeout(() => {
+   //implements ionic2 infiniteScroll
+   setTimeout(() => {
     this.skipValue();
-   if(this.displayData.length===100){
+    //stops infinite scroll on maximum length
+   if(this.displayData.length===this.employees.length){
       this.show_loadingText=false;
       return;
     }
@@ -54,6 +57,7 @@ setTimeout(() => {
     
   }
   deleteEmployee(deleteId:number) {
+    //alert box to confirm deletion of employees
     let confirm = this.alerCtrl.create({
       title: 'Do you want to delete this employee details?',
       buttons: [
@@ -78,10 +82,12 @@ setTimeout(() => {
     confirm.present()
   }
   openDetailsModal(employee_id) {
-    let detailsModal = this.modalCtrl.create(detailsModalPage,employee_id);
+    //opens employee details modal
+    let detailsModal = this.modalCtrl.create(DetailsModalPage,employee_id);
     detailsModal.present();
   }
   openEditModal(employee_id) {
+    //opens edit employee details modal
     let editModal = this.modalCtrl.create(EditModalPage,employee_id);
     editModal.present();
   }

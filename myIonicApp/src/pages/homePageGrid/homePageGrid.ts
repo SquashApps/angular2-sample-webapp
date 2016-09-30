@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController,AlertController,ModalController } from 'ionic-angular';
 import { EmployeeService } from '../../app/employee.service';
-import { employeeProperty } from '../../app/employee';
+import { EmployeeProperty } from '../../app/employee';
 import {EditModalPage} from '../editPage/editModalPage';
 @Component({
   templateUrl: 'homePageGrid.html'
 })
-export class homePageGrid {
-  employees: employeeProperty[];
-  displayData: employeeProperty[] = [];
+export class HomePageGrid {
+  employees: EmployeeProperty[];
+  displayData: EmployeeProperty[] = [];
   skip=0;
   limit=10;
   show_loadingText=true;

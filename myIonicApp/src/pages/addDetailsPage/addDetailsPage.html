@@ -10,11 +10,11 @@
   <form #form="ngForm" (ngSubmit)="addEmployeeDetails(form.value)">
         <ion-item>
             <ion-label floating>First name</ion-label>
-            <ion-input type="text" ngModel name="first_name" required></ion-input>
+            <ion-input type="text" ngModel name="firstName" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Last name</ion-label>
-            <ion-input type="text" ngModel name="last_name" required></ion-input>
+            <ion-input type="text" ngModel name="lastName" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Email</ion-label>
@@ -22,7 +22,7 @@
         </ion-item>
         <ion-item>
             <ion-label floating>Gender</ion-label>
-            <ion-select [(ngModel)]="emp_gender" name="gender" required>
+            <ion-select [(ngModel)]="empGender" name="gender" required>
                 <ion-option value="Female">Female</ion-option>
                 <ion-option value="Male">Male</ion-option>
             </ion-select>

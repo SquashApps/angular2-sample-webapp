@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { employeeProperty } from './employee';
-import { employees } from './mock-data';
+import { EmployeeProperty } from './employee';
+import { Employees } from './mock-data';
 @Injectable()
 export class EmployeeService {
-  getList(): Promise<employeeProperty[]> {
-    return Promise.resolve(employees);
+  getList(): Promise<EmployeeProperty[]> {
+    //returns all data from mock data.js
+    return Promise.resolve(Employees);
   }
-  getEmployee(id: number): Promise<employeeProperty> {
+  getEmployee(id: number): Promise<EmployeeProperty> {
+    //stores all the data into employees varibale and returns it 
   return this.getList()
              .then(employees => employees.find(employees => employees.employee_id === id));
 }
