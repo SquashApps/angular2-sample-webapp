@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons left>
+            <button ion-button (click)="dismiss()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+        <ion-title>
+            Edit Details
+        </ion-title>
+        <ion-buttons right>
+            <button ion-button (click)="dismiss()">
+        <span color="primary" showWhen="ios">Cancel</span>
+        <span><ion-icon md="md-close"></ion-icon></span>
+      </button>
+    </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="selectedEmployee">
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Employee Id</ion-label>
+            <ion-input type="text" [(ngModel)]="selectedEmployee.employee_id"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>First name</ion-label>
+            <ion-input type="text" [(ngModel)]="selectedEmployee.first_name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Last name</ion-label>
+            <ion-input type="text" [(ngModel)]="selectedEmployee.last_name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" [(ngModel)]="selectedEmployee.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Gender</ion-label>{{selectedEmployee.gender}}
+            <ion-select [(ngModel)]="selectedEmployee.gender">{{selectedEmployee.gender}}
+                <ion-option value="Female">Female</ion-option>{{selectedEmployee.gender}}
+                <ion-option value="Male">Male</ion-option>{{selectedEmployee.gender}}
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <button ion-button block (click)="dismiss()">Submit</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

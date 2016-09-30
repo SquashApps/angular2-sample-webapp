@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons left>
+            <button ion-button (click)="dismiss()">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </button>
+        </ion-buttons>
+        <ion-title>
+            Edit Details
+        </ion-title>
+        <ion-buttons right>
+            <button ion-button (click)="dismiss()">
+        <span color="primary" showWhen="ios">Cancel</span>
+        <span><ion-icon md="md-close"></ion-icon></span>
+      </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="selectedEmployee">
+    <ion-card>
+        <ion-card-header>
+            <span>Employee Id:</span><span> {{selectedEmployee.employee_id}}</span>
+        </ion-card-header>
+        <ion-card-content>
+            <div>
+                <span>Name:</span><span> {{selectedEmployee.first_name}} {{selectedEmployee.last_name}}</span>
+            </div>
+            <div>
+                <span>Email:</span><span> {{selectedEmployee.email}}</span>
+            </div>
+            <div>
+                <span>Gender:</span><span> {{selectedEmployee.gender}}</span>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
